@@ -15,7 +15,7 @@
 <button onclick="socket.emit('message',new Date())">test</button>
 </body>
 <script>
-    // 如果服务端和客户端同域 可省略 url
+    // 如果服务端和客户端同域 可省略 url 如果连接其他服务器我试了没有跨域 todo why？
     const socket = io('http://localhost:5555')
     socket.on('message', msg => {
         let div = document.createElement('div')
