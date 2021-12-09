@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--引用服务端自动提供的 socket.io-client-->
+    <!--<script src="/socket.io/socket.io.js"></script>-->
+
+    <!--或者引用cdn提供的客户端 一定要注意大版本要和服务端的版本对应-->
+    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2.4.0/dist/socket.io.js"></script>
+
+</head>
+<body>
+<button onclick="socket.emit('message',new Date())">test</button>
+</body>
+<script>
+    // 如果服务端和客户端同域 可省略 url
+    const socket = io('http://localhost:5555')
+    socket.on('message', msg => {
+        let div = document.createElement('div')
+        div.innerText = msg
+        document.body.appendChild(div);
+    })
+</script>
+</html>
